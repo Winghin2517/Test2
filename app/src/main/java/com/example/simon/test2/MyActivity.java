@@ -1,6 +1,7 @@
 package com.example.simon.test2;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +17,9 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
         TextView textbox = (TextView) findViewById(R.id.textbox);
+        textbox.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));
         textbox.setText(getClass().getName());
+
         return;
 
     }
