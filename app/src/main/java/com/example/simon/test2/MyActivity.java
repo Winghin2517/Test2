@@ -1,5 +1,6 @@
 package com.example.simon.test2;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import net.simonvt.menudrawer.MenuDrawer;
+import net.simonvt.menudrawer.Position;
 
 
 public class MyActivity extends Activity {
@@ -16,14 +18,36 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        mMenuDrawer = attachMenuDrawer();
+        mMenuDrawer.setContentView(R.layout.activity_my);
+       // ActionBar actionBar = getActionBar();
+       // if (actionBar != null) {
+       //     actionBar.setDisplayHomeAsUpEnabled(true);
+       // }
         TextView textbox = (TextView) findViewById(R.id.textbox);
         textbox.setTypeface(Typeface.create(Typeface.DEFAULT,Typeface.BOLD));
         textbox.setText(getClass().getName());
-
-        return;
-
     }
 
+    private MenuDrawer attachMenuDrawer() {
+        final MenuDrawer menuDrawer;
+        ActionBar actionBar = getActionBar();
+
+
+        menuDrawer = MenuDrawer.attach(this, MenuDrawer.Type.OVERLAY);
+        if (actionBar != null) {
+             actionBar.setDisplayHomeAsUpEnabled(true);
+          }
+        menuDrawer.setDrawerIndicatorEnabled(true);
+
+       // int shadowSizeInPixels = getResources().getDimensionPixelSize(R.dimen.menu_shadow_width);
+       // menuDrawer.setDropShadowSize(shadowSizeInPixels);
+       //menuDrawer.setDropShadowColor(getResources().getColor(R.color.md__shadowColor));
+       // menuDrawer.setSlideDrawable(R.drawable.ic_drawer);
+
+        return menuDrawer;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
