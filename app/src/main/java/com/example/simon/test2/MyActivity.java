@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 import net.simonvt.menudrawer.MenuDrawer;
 
 
@@ -13,6 +15,8 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        TextView textbox = (TextView) findViewById(R.id.textbox);
+        textbox.setText(getClass().getName());
         return;
 
     }
